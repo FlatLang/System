@@ -87,7 +87,7 @@ immutable class {
     }
 
     public static async execute(String command, String workingDirectory = null, Bool: silent = false) =>
-        await execute(command.splitOnTopLevel(SyntaxStringFunctions.WHITESPACE), workingDirectory, silent: silent)
+        execute(command.splitOnTopLevel(SyntaxStringFunctions.WHITESPACE), workingDirectory, silent: silent)
 
     public static getEnv(String name) -> String {
         native var Char[] data
