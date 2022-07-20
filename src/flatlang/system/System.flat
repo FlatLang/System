@@ -9,7 +9,7 @@ import "flatlang/time/CumulativeTimer"
 import "flatlang/system/System"
 
 [AutoFinal]
-immutable class System {
+class System {
     external type FILE
     external type thing
 
@@ -178,7 +178,7 @@ immutable class System {
             Console.waitForEnter()
         }
 
-        Thread.ACTIVE_THREADS.forEach({ _.join() })
+        // Thread.ACTIVE_THREADS.forEach({ _.join() })
 
         external c {
             if ((errno = nova_close_semaphore()) != 0) return errno;
