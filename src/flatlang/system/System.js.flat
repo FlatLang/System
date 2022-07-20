@@ -3,7 +3,7 @@ package "flatlang/system"
 import "flatlang/extensions/SyntaxStringFunctions"
 
 [AutoFinal]
-immutable class {
+class {
     visible static String workingDirectory {
         get {
             native var Char[] data

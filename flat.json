@@ -8,6 +8,7 @@
   "main": {
     "source": "src",
     "dependencies": {
+      "github:FlatLang/Standard-Library": "master",
       "github:FlatLang/Compiler-String-Extensions": "master",
       "github:FlatLang/Time": "master",
       "github:FlatLang/IO": "master"
