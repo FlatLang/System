@@ -13,8 +13,6 @@ class System {
     external type FILE
     external type thing
 
-    external void nova_gc_collect()
-
     external int NULL
 
     external void exit(int code) as externalExit
@@ -212,8 +210,6 @@ class System {
 
             NOVA_FREE((void*)#{args});
         }
-
-        nova_gc_collect()
     }
 
     [Target js]
