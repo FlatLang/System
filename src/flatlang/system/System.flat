@@ -91,7 +91,7 @@ class System {
         }
     }
 
-    visible static CumulativeTimer overheadTimer = new CumulativeTimer()
+    visible static CumulativeTimer overheadTimer = CumulativeTimer()
 
     [Target c]
     public static exit(Int code) {
@@ -118,7 +118,7 @@ class System {
 
     public static exit(Int code, String message, Bool log) {
         if (log) {
-            let f = new FileWriter("Log" + Time.currentTimeMillis + ".txt")
+            let f = FileWriter("Log" + Time.currentTimeMillis + ".txt")
 
             if (f.create()) {
                 f.writeLine(message)
@@ -138,7 +138,7 @@ class System {
             exit(1, "Unable to open pipe")
         }
 
-        return new Process(new FileReader(pipe))
+        return Process(FileReader(pipe))
     }
 
     [Target c]
@@ -160,7 +160,7 @@ class System {
 
         external c {
             nova_garbageData = NOVA_MALLOC(sizeof(void*));
-            nova_null = #{new Null()};
+            nova_null = #{Null()};
 
             if ((errno = nova_create_semaphore()) != 0) return errno;
         }
@@ -182,7 +182,7 @@ class System {
                     copy_string(#{allocated}, #{argvs[i]});
                 }
 
-                args[i] = new String(allocated)
+                args[i] = String(allocated)
             }
 
             mainFunc(args)

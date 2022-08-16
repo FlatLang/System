@@ -12,7 +12,7 @@ class {
                 #{data} = process.cwd();
             }
 
-            return new String(data)
+            return String(data)
         }
     }
 
@@ -24,15 +24,15 @@ class {
                 #{data} = #{SystemGlobal.os}.homedir();
             }
 
-            return new String(data)
+            return String(data)
         }
     }
 
     public static async execute(String[] arguments, String workingDirectory = null, Bool: silent = false) -> ExecutionResponse {
         native var Char[] dataBuffer
 
-        let stdout = new Array<String>()
-        let stderr = new Array<String>()
+        let stdout = Array<String>()
+        let stderr = Array<String>()
 
         var native Int exitCode
 
@@ -50,7 +50,7 @@ class {
 
                     childProcess.stdout.on('data', (data) => {
                         #{dataBuffer} = data.toString();
-                        #{stdout.add(new String(dataBuffer))};
+                        #{stdout.add(String(dataBuffer))};
                         if (#{!silent}) {
                             process.stdout.write(#{dataBuffer});
                         }
@@ -58,7 +58,7 @@ class {
 
                     childProcess.stderr.on('data', (data) => {
                         #{dataBuffer} = data.toString();
-                        #{stderr.add(new String(dataBuffer))};
+                        #{stderr.add(String(dataBuffer))};
                         if (#{!silent}) {
                             process.stderr.write(#{dataBuffer});
                         }
@@ -66,7 +66,7 @@ class {
 
                     childProcess.on('error', (err) => {
                         #{dataBuffer} = err.toString();
-                        #{throw new Exception(new String(dataBuffer))};
+                        #{throw Exception(String(dataBuffer))};
                     });
 
                     childProcess.on('exit', (code) => {
@@ -74,12 +74,12 @@ class {
                     });
                 } catch (e) {
                     #{dataBuffer} = e.toString();
-                    #{throw new Exception(new String(dataBuffer))};
+                    #{throw Exception(String(dataBuffer))};
                 }
             });
         }
 
-        return new ExecutionResponse(
+        return ExecutionResponse(
             stdout: stdout,
             stderr: stderr,
             exitCode: exitCode
@@ -100,7 +100,7 @@ class {
             }
         }
 
-        return new String(data)
+        return String(data)
     }
 
     public static class SystemGlobal {
