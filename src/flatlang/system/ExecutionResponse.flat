@@ -1,4 +1,4 @@
-package "flatlang/system"
+package flatlang/system
 
 class {
       public construct(

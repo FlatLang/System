@@ -1,6 +1,6 @@
-package "flatlang/system"
+package flatlang/system
 
-import "flatlang/extensions/SyntaxStringFunctions"
+import flatlang/extensions/SyntaxStringFunctions
 
 [AutoFinal]
 class {
