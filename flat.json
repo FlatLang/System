@@ -7,6 +7,9 @@
   "scripts": {},
   "main": {
     "source": "src",
+    "defaultExports": [
+      "flatlang/system/System"
+    ],
     "dependencies": {
       "github:FlatLang/Compiler-String-Extensions": "master",
       "github:FlatLang/Time": "master",
