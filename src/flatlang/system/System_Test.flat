@@ -1,0 +1,11 @@
+package flatlang/system
+
+import flatlang/system/System
+
+testable class {
+  test `can create`() {
+    let value = System()
+
+    expect(value).toNotBe(null)
+  }
+}
