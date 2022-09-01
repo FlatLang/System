@@ -28,7 +28,7 @@ class {
         }
     }
 
-    public static async execute(String[] arguments, String workingDirectory = null, Bool: silent = false) -> ExecutionResponse {
+    public static async execute(String[] arguments, String workingDirectory = null, Bool: silent = false, Bool: shell = true) -> ExecutionResponse {
         native var Char[] dataBuffer
 
         let stdout = Array<String>()
@@ -44,7 +44,7 @@ class {
                         #{arguments.skip(1).map({_.chars.data}).data},
                         {
                             cwd: #{workingDirectory ? workingDirectory.chars.data : ".".chars.data},
-                            shell: true
+                            shell: #{shell}
                         }
                     );
 
@@ -86,8 +86,8 @@ class {
         )
     }
 
-    public static async execute(String command, String workingDirectory = null, Bool: silent = false) =>
-        execute(command.splitOnTopLevel(SyntaxStringFunctions.WHITESPACE), workingDirectory, silent: silent)
+    public static async execute(String command, String workingDirectory = null, Bool: silent = false, Bool: shell = true) =>
+        execute(command.splitOnTopLevel(SyntaxStringFunctions.WHITESPACE), workingDirectory, silent: silent, shell: shell)
 
     public static getEnv(String name) -> String {
         native var Char[] data
