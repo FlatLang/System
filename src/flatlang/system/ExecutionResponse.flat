@@ -1,9 +1,17 @@
 package flatlang/system
 
 class {
-      public construct(
-          visible String[] stdout,
-          visible String[] stderr,
-          visible Int exitCode
-      )
-  }
+  public construct(
+    visible String[] stdout,
+    visible String[] stderr,
+    visible Int exitCode
+  ) {}
+
+  override public toString() => "|
+    ExecutionResponse {
+      stdout: #{stdout},
+      stderr: #{stderr},
+      exitCode: #exitCode
+    }
+    |"
+}
