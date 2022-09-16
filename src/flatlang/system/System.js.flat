@@ -66,7 +66,7 @@ class {
 
                     childProcess.on('error', (err) => {
                         #{dataBuffer} = err.toString();
-                        #{throw Exception(String(dataBuffer))};
+                        reject(#{Exception(String(dataBuffer))});
                     });
 
                     childProcess.on('exit', (code) => {
@@ -74,7 +74,7 @@ class {
                     });
                 } catch (e) {
                     #{dataBuffer} = e.toString();
-                    #{throw Exception(String(dataBuffer))};
+                    reject(#{Exception(String(dataBuffer))});
                 }
             });
         }
