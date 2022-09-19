@@ -36,12 +36,15 @@ class {
 
         var native Int exitCode
 
+        let commandName = arguments.first
+        let processArguments = arguments.skip(1).map({ '"' + _.trimSurrounding('"', count: 1) + '"' })
+
         external {
             #{exitCode} = await new Promise((resolve, reject) => {
                 try {
                     var childProcess = #{SystemGlobal.childProcess}.spawn(
-                        #{arguments[0].chars.data},
-                        #{arguments.skip(1).map({_.chars.data}).data},
+                        #{commandName.chars.data},
+                        #{processArguments.map({ _.chars.data }).data},
                         {
                             cwd: #{workingDirectory ? workingDirectory.chars.data : ".".chars.data},
                             shell: #{shell}
