@@ -1,6 +1,6 @@
-package flatlang/system
+package flat/system
 
-import flatlang/system/System
+import flat/system/System
 
 testable class {
   test `can create`() {
