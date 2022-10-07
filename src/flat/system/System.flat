@@ -8,7 +8,6 @@ import flat/time/Time
 import flat/time/CumulativeTimer
 import flat/system/System
 
-[AutoFinal]
 class System {
     external type FILE
     external type thing

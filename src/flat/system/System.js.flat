@@ -2,7 +2,6 @@ package flat/system
 
 import flat/extensions/SyntaxStringFunctions
 
-[AutoFinal]
 class {
     visible static String workingDirectory {
         get {
