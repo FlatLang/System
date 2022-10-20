@@ -10,7 +10,7 @@ import flat/system/System_Test
   System_Test
 ]]
 class {
-  public static async main(String args[]) {
+  public static async main(String[] args) {
     let test = System_TestSuite()
 
     Timer timer = Timer().start()
