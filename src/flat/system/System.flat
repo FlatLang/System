@@ -20,19 +20,19 @@ class System {
     external bool fgets(char buffer[], int length, FILE* pipe)
     external bool feof(FILE* pipe)
 
-    [Target c] visible static final String TARGET = "C"
-    [Target js] visible static final String TARGET = "Javascript"
-    [Target java] visible static final String TARGET = "Java"
+    [Target c] visible static String TARGET = "C"
+    [Target js] visible static String TARGET = "Javascript"
+    [Target java] visible static String TARGET = "Java"
 
-    visible static final String OS
+    visible static String OS
 
-    visible static final Int WINDOWS = 1
-    visible static final Int LINUX = 2
-    visible static final Int MAC_OSX = 3
-    visible static final Int ANDROID = 4
-    visible static final Int IOS = 5
+    visible static Int WINDOWS = 1
+    visible static Int LINUX = 2
+    visible static Int MAC_OSX = 3
+    visible static Int ANDROID = 4
+    visible static Int IOS = 5
 
-    visible static final Int OS_INT
+    visible static Int OS_INT
 
     [Target c]
     compiler_visible thread_local external_name static ExceptionData exceptionData
