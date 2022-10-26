@@ -31,6 +31,7 @@ class System {
     visible static Int MAC_OSX = 3
     visible static Int ANDROID = 4
     visible static Int IOS = 5
+    visible static Int UNKNOWN = 6
 
     visible static Int OS_INT
 
@@ -68,6 +69,10 @@ class System {
                         #{OS_INT = MAC_OSX};
                         break;
                     }
+                    default: {
+                        #{OS = "Unknown"};
+                        #{OS_INT = UNKNOWN};
+                    }
                 }
             } else if (typeof navigator !== 'undefined') {
                 if (navigator.userAgent.indexOf("Win") !== -1) {
@@ -85,6 +90,9 @@ class System {
                 } else if (navigator.userAgent.indexOf("like Mac") !== -1) {
                     #{OS = "iOS"};
                     #{OS_INT = IOS};
+                } else {
+                    #{OS = "Unknown"};
+                    #{OS_INT = UNKNOWN};
                 }
             }
         }
