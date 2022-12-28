@@ -119,17 +119,12 @@ class System {
         }
     }
 
-    public static exit(Int code, String message) {
-        exit(code, message, false)
-    }
-
-    public static exit(Int code, String message, Bool log) {
+    public static exit(Int code, String message, Bool log = false) {
         if (log) {
-            let f = FileWriter("Log" + Time.currentTimeMillis + ".txt")
+            let file = File("Log" + Time.currentTimeMillis + ".txt")
+            let f = FileWriter(file)
 
-            if (f.create()) {
-                f.writeLine(message)
-            }
+            f.writeLine(message)
         }
 
         Console.writeLine(message)
