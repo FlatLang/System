@@ -4,12 +4,10 @@
   },
   "sources": {
     "main": {
-      "outDirectory": "dist",
       "outFile": "index.js",
       "dependencies": {}
     },
     "test": {
-      "outDirectory": "dist",
       "outFile": "test.js",
       "dependencies": {}
     }
