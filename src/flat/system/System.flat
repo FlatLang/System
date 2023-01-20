@@ -149,7 +149,7 @@ class System {
             arg.contains(/[ &]/) ? "\"#arg\"" : arg
         }).join(" "))
 
-    compiler_visible static runMain(Int argc, native Char[][] argvs, mainFunc(Array<String>), initialize() = {}, callStaticBlocks() = {}) -> Int => 0 {
+    compiler_visible static runMain(Int argc, native_array native Char[][] argvs, mainFunc(Array<String>), initialize() = {}, callStaticBlocks() = {}) -> Int => 0 {
         external c {
             #ifdef _WIN32
                 setProgramName(#{argvs[0]});
@@ -177,7 +177,7 @@ class System {
             args = new String[argc]
 
             for (i in 0..argc) {
-                var native Char[] allocated
+                var native_array native Char[] allocated
 
                 external c {
                     #{allocated} = (char*)NOVA_MALLOC(sizeof(char) * strlen(#{argvs[i]}) + 1);

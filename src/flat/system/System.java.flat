@@ -5,7 +5,7 @@ import flat/extensions/SyntaxStringFunctions
 class {
     visible static String workingDirectory {
         get {
-            native var Char[] data
+            native_array native var Char[] data
 
             external {
 
@@ -17,7 +17,7 @@ class {
 
     visible static String homeDirectory {
         get {
-            native var Char[] data
+            native_array native var Char[] data
 
             external {
 
@@ -28,7 +28,7 @@ class {
     }
 
     public static async execute(String[] arguments, String workingDirectory = null, Bool: silent = false, Bool: shell = true) -> ExecutionResponse {
-        native var Char[] dataBuffer
+        native_array native var Char[] dataBuffer
 
         let stdout = Array<String>()
         let stderr = Array<String>()
@@ -53,7 +53,7 @@ class {
         execute(command.splitOnTopLevel(SyntaxStringFunctions.WHITESPACE), workingDirectory, silent: silent, shell: shell)
 
     public static getEnv(String name) -> String {
-        native var Char[] data
+        native_array native var Char[] data
 
         external {
 
