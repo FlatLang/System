@@ -108,7 +108,7 @@ class System {
     [Target java]
     public static exit(Int code) {
         external {
-            System.exit(#{code});
+            java.lang.System.exit(#{code});
         }
     }
 
