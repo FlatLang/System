@@ -36,7 +36,7 @@ class {
         var native Int exitCode
 
         let commandName = arguments.first
-        let processArguments = arguments.skip(1).map({ '"' + _.trimSurrounding('"', count: 1) + '"' })
+        let processArguments = arguments.skip(1).map({ '"' + _.replace("\"", "\\\"") + '"' })
 
         external {
             #{exitCode} = await new Promise((resolve, reject) => {
