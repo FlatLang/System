@@ -1,17 +1,8 @@
 package flat/system
 
-class {
-    public construct(
-        visible String[] stdout,
-        visible String[] stderr,
-        visible Int exitCode
-    ) {}
-
-    override public toString() => "|
-        ExecutionResponse {
-            stdout: #{stdout},
-            stderr: #{stderr},
-            exitCode: #exitCode
-        }
-        |"
+data class {
+    visible String[] stdout
+    visible String[] stderr
+    visible String[] output
+    visible Int exitCode
 }
