@@ -32,6 +32,7 @@ class {
 
         let stdout = Array<String>()
         let stderr = Array<String>()
+        let output = Array<String>()
 
         var native Int exitCode
 
@@ -52,6 +53,8 @@ class {
 
                     childProcess.stdout.on('data', (data) => {
                         #{dataBuffer} = data.toString();
+                        #{output.add(String(dataBuffer))};
+                        #{dataBuffer} = data.toString();
                         #{stdout.add(String(dataBuffer))};
                         if (#{!silent}) {
                             process.stdout.write(#{dataBuffer});
@@ -59,6 +62,8 @@ class {
                     });
 
                     childProcess.stderr.on('data', (data) => {
+                        #{dataBuffer} = data.toString();
+                        #{output.add(String(dataBuffer))};
                         #{dataBuffer} = data.toString();
                         #{stderr.add(String(dataBuffer))};
                         if (#{!silent}) {
@@ -82,9 +87,10 @@ class {
         }
 
         return ExecutionResponse(
-            stdout: stdout,
-            stderr: stderr,
-            exitCode: exitCode
+            stdout,
+            stderr,
+            output,
+            exitCode
         )
     }
 
