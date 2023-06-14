@@ -26,7 +26,7 @@ class System {
 
     visible static Int WINDOWS = 1
     visible static Int LINUX = 2
-    visible static Int MAC_OSX = 3
+    visible static Int MAC_OS = 3
     visible static Int ANDROID = 4
     visible static Int IOS = 5
     visible static Int UNKNOWN = 6
@@ -45,8 +45,8 @@ class System {
                 #{OS = "Linux"};
                 #{OS_INT = LINUX};
             #elif defined(__APPLE__)
-                #{OS = "Mac OS X"};
-                #{OS_INT = MAC_OSX};
+                #{OS = "MacOS"};
+                #{OS_INT = MAC_OS};
             #endif
         }
         external js {
@@ -63,8 +63,8 @@ class System {
                         break;
                     }
                     case "darwin": {
-                        #{OS = "Mac OS X"};
-                        #{OS_INT = MAC_OSX};
+                        #{OS = "MacOS"};
+                        #{OS_INT = MAC_OS};
                         break;
                     }
                     default: {
@@ -77,8 +77,8 @@ class System {
                     #{OS = "Windows"};
                     #{OS_INT = WINDOWS};
                 } else if (navigator.userAgent.indexOf("Mac") !== -1) {
-                    #{OS = "Mac OS X"};
-                    #{OS_INT = MAC_OSX};
+                    #{OS = "MacOS"};
+                    #{OS_INT = MAC_OS};
                 } else if (navigator.userAgent.indexOf("Linux") !== -1) {
                     #{OS = "Linux"};
                     #{OS_INT = LINUX};
