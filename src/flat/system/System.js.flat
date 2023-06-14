@@ -54,7 +54,7 @@ class {
         return executeExact(processArguments, workingDirectory, silent, shell)
     }
 
-    static async executeExact(String[] arguments, String workingDirectory = null, Bool: silent = false, Bool: shell = true) -> ExecutionResponse {
+    public static async executeExact(String[] arguments, String workingDirectory = null, Bool: silent = false, Bool: shell = true) -> ExecutionResponse {
         native_array native var Char[] dataBuffer
 
         let stdout = Array<String>()
