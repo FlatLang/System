@@ -31,7 +31,23 @@ class {
     }
 
     public static async execute(String[] arguments, String workingDirectory = null, Bool: silent = false, Bool: shell = true) -> ExecutionResponse {
-        let processArguments = arguments.map({ _x.contains(/\s/) ? '"' + _x.replace("\"", "\\\"") + '"' : _x })
+        let processArguments = arguments.map((arg) => {
+            if (arg.findWhitespaceOutsideOfString() != -1) {
+                return '"' + arg.replace("\"", "\\\"") + '"'
+            }
+
+            let doubleIndex = arg.indexOf('"')
+            let singleIndex = arg.indexOf('\'')
+
+            if (doubleIndex > 0 && (singleIndex == -1 || doubleIndex < singleIndex)) {
+                return '"' + arg.replace("\"", "\\\"") + '"'
+            }
+            if (singleIndex > 0 && (doubleIndex == -1 || singleIndex < doubleIndex)) {
+                return '\'' + arg.replace("'", "\\'") + '\''
+            }
+
+            return arg
+        })
 
         return executeExact(processArguments, workingDirectory, silent, shell)
     }
