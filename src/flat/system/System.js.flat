@@ -66,7 +66,7 @@ class {
         let commandName = arguments.first
         let processArguments = arguments.skip(1)
 
-        log.debug("Running command: #{commandName} with args: '#{processArguments}'")
+        log.debug("Running command in '#{workingDirectory}': #{commandName} with args: '#{processArguments}'")
 
         external {
             #{exitCode} = await new Promise((resolve, reject) => {
