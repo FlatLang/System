@@ -1,5 +1,8 @@
 package flat/system
 
+import flat/regex
+
+import flat/regex/RegexStringExtensions
 import flat/extensions/SyntaxStringFunctions
 
 class {
@@ -28,6 +31,12 @@ class {
     }
 
     public static async execute(String[] arguments, String workingDirectory = null, Bool: silent = false, Bool: shell = true) -> ExecutionResponse {
+        let processArguments = arguments.map({ _x.contains(/\s/) ? '"' + _x.replace("\"", "\\\"") + '"' : _x })
+
+        return executeExact(processArguments, workingDirectory, silent, shell)
+    }
+
+    static async executeExact(String[] arguments, String workingDirectory = null, Bool: silent = false, Bool: shell = true) -> ExecutionResponse {
         native_array native var Char[] dataBuffer
 
         let stdout = Array<String>()
@@ -37,7 +46,7 @@ class {
         var native Int exitCode
 
         let commandName = arguments.first
-        let processArguments = arguments.skip(1).map({ '"' + _.replace("\"", "\\\"") + '"' })
+        let processArguments = arguments.skip(1)
 
         external {
             #{exitCode} = await new Promise((resolve, reject) => {
@@ -94,8 +103,11 @@ class {
         )
     }
 
-    public static async execute(String command, String workingDirectory = null, Bool: silent = false, Bool: shell = true) =>
-        execute(command.splitOnTopLevel(SyntaxStringFunctions.WHITESPACE), workingDirectory, silent: silent, shell: shell)
+    public static async execute(String command, String workingDirectory = null, Bool: silent = false, Bool: shell = true) -> ExecutionResponse {
+        let args = command.splitOnTopLevel(SyntaxStringFunctions.WHITESPACE)
+
+        return executeExact(args, workingDirectory, silent: silent, shell: shell)
+    }
 
     public static getEnv(String name) -> String {
         native_array native var Char[] data
