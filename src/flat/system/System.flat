@@ -1,12 +1,7 @@
 package flat/system
 
-import flat/io/StreamReader
-import flat/io/File
-import flat/io/FileWriter
-import flat/io/FileReader
-import flat/time/Time
-import flat/time/CumulativeTimer
-import flat/system/System
+import flat/io
+import flat/time
 
 class System {
     external type FILE
