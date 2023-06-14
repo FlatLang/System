@@ -48,6 +48,8 @@ class {
         let commandName = arguments.first
         let processArguments = arguments.skip(1)
 
+        log.debug("Running command: #{commandName} with args: '#{processArguments}'")
+
         external {
             #{exitCode} = await new Promise((resolve, reject) => {
                 try {

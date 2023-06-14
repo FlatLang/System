@@ -2,8 +2,11 @@ package flat/system
 
 import flat/io
 import flat/time
+import flat/log
 
 class System {
+    static Logger log = Logger(System.class)
+
     external type FILE
     external type thing
 
