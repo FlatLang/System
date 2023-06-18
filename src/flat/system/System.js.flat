@@ -5,6 +5,8 @@ import flat/regex
 import flat/regex/RegexStringExtensions
 import flat/extensions/SyntaxStringFunctions
 
+import static flat/node/import/Import
+
 class {
     visible static String workingDirectory {
         get {
@@ -144,32 +146,12 @@ class {
     }
 
     public static class SystemGlobal {
-        external type ChildProcessType
-        private static var ChildProcessType _childProcess
-        visible static ChildProcessType childProcess {
-            get {
-                external {
-                    if (!#{_childProcess}) {
-                        #{_childProcess} = require('child_process');
-                    }
-                }
+        visible static native Object childProcess
+        visible static native Object os
 
-                return _childProcess
-            }
-        }
-
-        external type OsType
-        private static var OsType _os
-        visible static OsType os {
-            get {
-                external {
-                    if (!#{_os}) {
-                        #{_os} = require('os');
-                    }
-                }
-
-                return _os
-            }
+        async static {
+            childProcess = import("child_process")
+            os = import("os")
         }
     }
 }
